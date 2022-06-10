@@ -182,7 +182,7 @@ When a Node or Gateway joins Massbit, it needs to go through different states be
   - Vu Viet Tai 
   - Nguyen Anh Huy
   - Nguyen Manh Dat
-  - Thien Tuong
+  - Nguyen Thien Tuong
   - Bui Tran Huy Hoang
 
 ### Contact
@@ -198,7 +198,7 @@ When a Node or Gateway joins Massbit, it needs to go through different states be
 
 ### Team's experience
 
-  - Tran Thanh Vu: Massbit Technical Product Manager - 9+ year experience working with high load system, design architecture system, resolve problem in high performance, high available, scalability, distributed system, and big data.
+  - **Tran Thanh Vu:** Massbit Technical Product Manager - 9+ year experience working with high load system, design architecture system, resolve problem in high performance, high available, scalability, distributed system, and big data.
   - **Vu Viet Tai:** Massbit Product Owner - Co-Founder of Appbike, experience in product management and Scrum development
   - **Nguyen Anh Huy:** Software Engineer (Rust) - Doctor of Computer Science and Intelligent Systems - Osaka Prefecture University
   - **Nguyen Manh Dat:** Software Engineer (Rust - Blockchain) - Software Engineer with past experience building large E-commerce platform and Fintech product 
