@@ -277,7 +277,7 @@ Polkadot.js
 | 0.c    | Testing Guide                                | Core functions will be fully covered by unit tests to ensure functionality and robustness. In the guide, we will describe how to run these tests.                                            |
 | 0.d    | Docker release                               | We will provide docker files to simulate Massbit network that can be used to test all of the functionality delivered with this milestone                                                     |
 | 0.e    | Article                                      | We will publish an article that explains the how individuals and communities around the world can run Nodes and Gateways and participate in service Massbit network                          |
-| 1.     | Massbit Core Implementation (Lua)            | We will implement Massbit Core which is responsible for generating installation scripts and routing configuration for all Nodes and Gateways within Massbit network                          |
+| 1.     | Massbit Core Implementation (Lua)            | We will implement Massbit Core which is responsible for ochestrating, generating installation scripts and routing configuration for all Nodes and Gateways within Massbit network                          |
 | 2.     | Gateway Manager Implementation (C)           | We will implement Gateway Manager as an Authoritative DNS server for Massbit network                                                                                                         |
 | 3.     | Session Manager (Rust)                       | We will implement Session Manager to control and grant session keys to Massbit Community Gateways                                                                                            |
 | 4.     | Fisherman - Node Verification Service (Rust) | We will implement Fishserman which will be also included as part of Massbit Gateway. This allows the Node/Gateway to be verified and with the others before join Massbit network             |
@@ -285,7 +285,6 @@ Polkadot.js
 | 6.     | Stats and monitoring system implementation   | We will implement a metric collection module to observe traffic and network performance to make improvement/adjustment to routing mechanism as needed
                                         |
 | 7.     | Web Portal implementation  (Vue.js)          | We will implement the front-end web portal to allow user interaction with Massbit such as creating new node/gateway and generate installation scripts, or staking and claiming token rewards |
-
 
 ### Milestone 2 - Implementation for substrate-based Massbit chain
 
