@@ -185,7 +185,9 @@ Polkadot.js
 
 ### Ecosystem Fit
 
-- Massbit Route is a decentralized network of Nodes and Gateways that route dApps requests to low latency blockchain nodes. Built on Substrate framework, we would like to create a diversified ecosystem of blockchain nodes and Web3 applications. Within the ecosystem, by using Massbit tokens, independent individuals, groups, communities, or organizations can freely join and get paid for servicing the network by running and paying for usage of blockchain-node.
+- Massbit Route is a decentralized network of Nodes and Gateways that route dApps requests to low latency blockchain nodes. Built on Substrate framework, we would like to create a diversified network of independent blockchain RPC nodes and Web3 applications that are servicing each other.
+
+- Within the ecosystem, by using Massbit tokens, independent individuals, groups, communities, or organizations can freely join and get reward for servicing the BDN network by running Node/Gateways. With Massbit Route dAPI, Web3/DApps will have reliable and cost-efficient access to a independent blockchain RPC nodes through Massbit routing and caching mechanism. There is no middle-man or single entity that controls the entire blockchain distribution network which will eliminate the majority of undesired service interuption or censorship that may happen.
 
 - With a foundational software design and network routing structure of Massbit Nodes and Gateways, the upcoming integration with more layer-1 protocols, ETH layer 2 solutions, and other parachains become less of a burden in the near future. Once our team sees a demand for a new type of blockchain in the Massbit Route network, the implementation for the new blockchain integration can be done in a short duration. Our team commits to listen and support our community's needs to enrich the ecosystem and maintain the stability of the Massbit network.
 
