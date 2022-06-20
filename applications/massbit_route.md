@@ -174,14 +174,14 @@ When a Node or Gateway joins Massbit, it needs to go through different states be
 
 #### Project Technology Stacks
 
-Rust
-Substrate
-Node.js
-NGINX (Open Resty)
-Lua
-Docker
-Vue.js
-Polkadot.js
+- Rust
+- Substrate
+- Node.js
+- NGINX (Open Resty)
+- Lua
+- Docker
+- Vue.js
+- Polkadot.js
 
 ### Ecosystem Fit
 
