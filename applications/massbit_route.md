@@ -194,6 +194,49 @@ When a Node or Gateway joins Massbit, it needs to go through different states be
 
 - **Reported**: While nodes/gateways are servicing the network, Fisherman continuously checks for the network stability of each node/gateway. In case a node/gateway does not pass the check, it will be reported and eliminated from the Massbit network.
 
+#### How does Massbit make sure that the nodes actually fulfil the Performance requirements?
+
+All Massbit Gateways have Fisherman component included, which is responsible for ensuring the neighbor Nodes and Gateways are functional. Each Fisherman talks to a Scheduler in its region and perform assgined tasks
+
+1. When a Node/Gateway needs to join Massbit network, the Schedulers requires all active Gateways in the network to measure Round Trip Time (RTT) and network bandwidth to the new Node/Gateway. 
+2. Based on the result of RTT and network bandwidth from active Gateways to the new Node/Gateway, it they satisfy the RTT and network bandwidth baseline, the new Node/Gateway is verified. The Node Provider can stake the new node with MBT tokens and serve traffic. In case of a new Node, it also needs to be able to forward test RPC requests to its attached blockchain datasource and returns back valid RPC response.
+3. Once the new Node/Gateway is staked and actively serving traffic, the Scheduler will inform the Massbit Core to update the network configuration for the whole network with the new node.
+   - The new Gateway will receive a new network configuration to pair and forward traffic to low latency/nearby existing Nodes
+   - The new Node will receive a new network configuration to receive traffic from nearby Gateways
+4. The previous process will repeat periodically to update Gateway and Node pairings with the most optimized paths and make sure the new Node/Gateway remain functional in the Massbit network.
+
+#### How does Massbit system deal with denial-of-service (DDoS) attacks?
+
+Malicious actors will find a way to disrupt Massbit network in order to cause outage and interuption for Web3/DApp. For Massbit Gateways and Nodes, the only required open port is 443 to minimize the attack surface to Massbit network. What counter-measurements does Massbit implement to prevent this problem?
+
+Massbit Route is designed as distributed network of Nodes and Gateways. As Massbit network grows in the number of Gateways and Nodes in different regions, high network load is scattered across different paths to reach a blockchain RPC node, which will reduce the network congestion and mitigate the effect of DDOS attacks.
+
+- Protection at Node level:
+
+Massbit nodes only need to receive traffic from nearby Gateways. For that reason, HTTPS connections are only whitelisted for the nearby Gateways.
+
+- Protection at dAPI level:
+
+Attacker can obtain Massbit dAPI URL from Web3/DApps source code and perform volume-based DDoS at Layer 7 on the URL with the desire of saturating the bandwidth of the whole network. Each Massbit dAPI created has a default rate limiting configuration of 100 requests/sec which is applied on all Gateways that will be serving traffic for the specific dAPI URL. The consumers can adjust this number from the Web Portal based on their usage.
+
+When a dAPI URL is called, the traffic is handled by a Gateway which is in the same zone as the requester's source IP. If the attack lauches attack from many different botnets in a single or multiple Geo resgions to dAPI endpoints, their traffic is served by multiple Massbit Gateways. Once the request/sec threshold reaches on a Gateway, it start to refuses latter incoming requests. As a result, Massbit Gateways prevents DDoS traffic from entering Massbit network, and reaching underlying Massbit Nodes/RPC nodes. If a Gateway is overloaded and can no longer serve request due to DDoS protocol attacks such as SYN flood, or IP spoofing, the nearby Fishermans periodically check the Gateway health, and inform Massbit Core to update the routing and DNS configuration for the entire network to allow incoming RPC requests to be served by the other healthy Gateways within a zone.
+
+In order for the attacker's volume-based network traffic to penerate into Massbit network and reached Massbit Nodes and RPC nodes, they will need to deposit MBT token to their Massbit dAPI and receive a specific quota according to the deposit amount. If the dAPI quota reaches 0, Gateways also stop serving traffic for the dAPI URL. This also discourage the attacker as there is cost involved in launching the attack, and the Node Providers earns reward for maintain the network.
+
+- Protection at Gateway level:
+
+The attacker can focus on a specific Gateway IP and perform a direct DDoS attack without using the dAPI URL.
+
+At Layer 3 and 4 DDoS mitigation strategy, monitoring network health and traffic is one of our team's primary focus. Each Gateway and Node will be installed with a monitoring client which will report network statistics, network flow and top talkers, and alert to our internal team's monitoring service with pre-configured patterns/rules. 
+
+Based on our observation and anomolies detection, we can also implement a new traffic configuration policy, and allow Massbit Core to update the entire network of Massbit Gateways/Nodes to defend malicious DDoS traffic. DDoS protection at Layer 3/4 for Massbit network is a challenging task with unexpected and sophisticated threats, so we will have to take both pro-active and re-active approach to keep the network healthy.
+
+- Other counter-measurements:
+  
+Gateway Manager is also a crucial part of Massbit network as it can be seen as an authoritative DNS component of the network. DNS components are prone to reflection and amplification attack, which accelerate the rate of malformed traffic to deplete the server resources. We will utilize existing third-party service with Deep Packet Inspection capability, DNS query whitelisting and rate-limiting to add a layer of defense and DDoS mitigation to this component.
+
+Massbit Core and Massbit web portal are also placed behind a Web Application Firewall and Layer 3 Network Firewall  to protect against DDOS and common web application attacks.
+
 #### Tokenomic of MBT
 
 - MBT tokens will be used within the Massbit network by Node Providers, dAPI Consumers, and Delegators. In order to join the Massbit network, Node Providers need to stake their Massbit Nodes and Gateways to become actively serving blockchain requests in Massbit. In return, Node Providers will receive MBT token rewards from serving requests from dAPI Consumers. 
