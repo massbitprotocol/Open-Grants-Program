@@ -209,9 +209,9 @@ When a Node or Gateway joins Massbit, it needs to go through different states be
 
 #### How does Massbit system deal with denial-of-service (DDoS) attacks?
 
-Malicious actors will find a way to disrupt Massbit network in order to cause outage and interuption for Web3/DApp. For Massbit Gateways and Nodes, the only required open port is 443 to minimize the attack surface to Massbit network. What counter-measurements does Massbit implement to prevent this problem?
+- Malicious actors will find a way to disrupt Massbit network in order to cause outage and interuption for Web3/DApp. For Massbit Gateways and Nodes, the only required open port is 443 to minimize the attack surface to Massbit network. What counter-measurements does Massbit implement to prevent this problem?
 
-Massbit Route is designed as distributed network of Nodes and Gateways. As Massbit network grows in the number of Nodes/Gateways in 6 different regions, high network load is scattered across different paths to reach a specific blockchain RPC node, which will reduce the network congestion and mitigate the effect of DDOS attacks.
+- Massbit Route is designed as distributed network of Nodes and Gateways. As Massbit network grows in the number of Nodes/Gateways in 6 different regions, high network load is scattered across different paths to reach a specific blockchain RPC node, which will reduce the network congestion and mitigate the effect of DDOS attacks.
 
 - Protection at Node level:
 
