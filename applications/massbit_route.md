@@ -126,7 +126,7 @@ wss://[API ID].eth-mainnet.massbitroute.net/[API key]
 </p>
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/6365545/174590425-72af67df-c513-41d0-ba6f-2b6afc865c6e.PNG" alt="Node Detail"/>
+  <img src="https://user-images.githubusercontent.com/6365545/174592617-79cc8dec-1e65-4241-bd7d-3eea72d67b42.jpg" alt="Node Detail"/>
   Massbit Node Detail
 </p>
 
