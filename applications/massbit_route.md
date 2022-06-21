@@ -369,6 +369,7 @@ When a Node or Gateway joins Massbit, it needs to go through different states be
 | 5.     | Web Portal implementation  (Vue.js)          | We will implement the front-end web portal to allow user interaction with Massbit such as creating new node/gateway and generate installation scripts, or staking and claiming token rewards                                                          |
 | 6.     | Pallet Implementation for Consumer dAPI fee and reward distribution for providers | We will implement reward distribution from Consumer fee to Node providers based on the number of API requests served by each Provider.                                                                                                                                                                                                       |
 | 7.     | Pallet Implementation for Node Provider/Delegator staking and reward distribution | We will implement the Node/Gateway Staking feature for Providers and Delegators. In addition, the reward for each Node staking can be also claimed and sent to stakers' wallets                                                                                                                                                              |
+
 ### Milestone 2 - Implementation for substrate-based Massbit chain
 
 - **Estimated Duration:** 1 month
