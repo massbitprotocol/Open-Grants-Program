@@ -216,7 +216,7 @@ When a Node or Gateway joins Massbit, it needs to go through different states be
 
 - Protection at Node level:
 
-Massbit nodes only need to receive traffic from nearby Gateways with low RTT and high network bandwidth. For that reason, HTTPS connections are only whitelisted for those nearby Gateways.
+  - Massbit nodes only need to receive traffic from nearby Gateways with low RTT and high network bandwidth. For that reason, HTTPS connections are only whitelisted for those nearby Gateways.
 
 - Protection at dAPI level:
 
