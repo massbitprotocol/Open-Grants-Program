@@ -200,12 +200,13 @@ When a Node or Gateway joins Massbit, it needs to go through different states be
 
 1. When a Node/Gateway needs to join Massbit network, the Schedulers requires all active Gateways in the network to measure Round Trip Time (RTT) and network bandwidth to the new Node/Gateway. 
 2. Based on the result of RTT and network bandwidth from active Gateways to the new Node/Gateway, if they satisfy the RTT and network bandwidth baseline, the new Node/Gateway is verified. The Node Provider can stake the new node with MBT tokens and serve traffic. In case of a new Node, it also needs to be able to forward test RPC requests to its attached blockchain datasource and returns back valid RPC response.
-3. Once the new Node/Gateway is staked and actively serving traffic, the Scheduler will inform the Massbit Core to update the network configuration for the whole network with the new node.
+3. Once the new Node/Gateway is staked and actively serving traffic, the Scheduler will inform the Massbit Core to update the network configuration for the whole network with the new node. Based on measured RTTs and network bandwidth measure from each active Gateway to the new Node/Gateway:
    - The new Gateway will receive a new network configuration to pair and forward traffic to low latency/nearby existing Nodes
    - The new Node will receive a new network configuration to receive traffic from nearby Gateways
 4. The previous process will repeat periodically to update Gateway and Node pairings with the most optimized paths and make sure the new Node/Gateway remain functional in the Massbit network.
 
 - The specific values for ideal RTT and network bandwidth are to be determined as Massbit team needs to perform more benchmark and testing for further evaluation.
+- The Scheduler is designed to assign multiple checks/tasks to Fishermans on active Gateways. Depend on our findings, more tasks may be added after our internal testing and during testnet phase.
 
 #### How does Massbit system deal with denial-of-service (DDoS) attacks?
 
@@ -225,7 +226,7 @@ Massbit nodes only need to receive traffic from nearby Gateways with low RTT and
 
   - The Fisherman component of the nearby Gateways periodically check its neighbor for liveness, and inform Massbit Core to update the routing/DNS configuration for the entire network to instruct healthy Gateways to serve incoming RPC requests within a zone. If a Gateway's resources are overwhelmed and can no longer serve request due to DDoS protocol attacks such as SYN flood, or IP spoofing, Massbit Core updates with Gateway Manager to stop resolving the host portion in the dAPI URL to the unhealthy Gateway. This will add redundacy and ensure Massbit network remain functional in the event of some Gatways are taken down due to DDoS attack.
 
-  - The attacker can also create multiple dAPI entries to increase the attack surface, and amplify the magnitude of the attack. In order for the attacker's volume-based network traffic to penerate into Massbit network and reached Massbit Nodes and RPC nodes, they will need to deposit MBT token to their Massbit dAPI and receive a specific quota according to the deposit amount. If the dAPI quota reaches 0, Gateways also stop serving traffic for the dAPI URL. This also discourage the attacker as there is cost involved in launching the attack, and the Node Providers earns reward for maintain the network.
+  - The attacker can also create multiple Massbit dAPI entries to increase the attack surface, and amplify the magnitude of the attack. In order for the attacker's volume-based network traffic to penerate into Massbit network and reached Massbit Nodes and RPC nodes, they will need to deposit MBT token to their Massbit dAPI and receive a specific quota according to the deposit amount. If the dAPI quota reaches 0, Gateways stop serving traffic for the dAPI URL. This also discourage the attacker as there is cost involved in launching the attack, and the Node Providers earns reward for maintain the network.
 
 - Protection at Gateway level:
 
