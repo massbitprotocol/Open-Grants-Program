@@ -196,7 +196,10 @@ When a Node or Gateway joins Massbit, it needs to go through different states be
 
 #### How does Massbit make sure that the nodes actually fulfil the Performance requirements?
 
-- All Massbit Gateways have Fisherman component included, which is responsible for ensuring the neighbor Nodes and Gateways are functional. Each Fisherman talks to a Scheduler in its region and perform assgined tasks. 
+- In Milestone 1, we place Fisherman in each regions to check the network performance of new Nodes/Gateways before joining Massbit network. By measuring Rount Trip Time and network bandwidth from it self to the new Node/Gateway, it makes decisions whether the new node is eligible for joining the network. 
+- We are aware that this approach has many drawbacks and the evaluation proccess is not fair for all new nodes. The first version of Fisherman is a prototype for us to test the functionality of all Massbit components together.
+
+- In Milestone 2, Fisherman is modified to be more decentralized and more efficient. All Massbit Gateways have Fisherman component included, which is responsible for ensuring the neighbor Nodes and Gateways are functional. Each Fisherman talks to a Scheduler in its region and perform assgined tasks. 
 
 1. When a Node/Gateway needs to join Massbit network, the Schedulers requires all active Gateways in the network to measure Round Trip Time (RTT) and network bandwidth to the new Node/Gateway. 
 2. Based on the result of RTT and network bandwidth from active Gateways to the new Node/Gateway, if they satisfy the RTT and network bandwidth baseline, the new Node/Gateway is verified. The Node Provider can stake the new node with MBT tokens and serve traffic. In case of a new Node, it also needs to be able to forward test RPC requests to its attached blockchain datasource and returns back valid RPC response.
